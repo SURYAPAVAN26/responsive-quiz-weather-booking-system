@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Widgets - Advanced CSS & JS</title>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=1.0.1">
+</head>
+
+<body>
+
+    <header>
+        <h1>Dynamic Dashboard Widgets</h1>
+        <p>A reactive workspace featuring synced geolocation weather, interactive carousel, and smart quiz</p>
+    </header>
+
+    <main class="dashboard-grid">
+        <!-- Quiz Section -->
+        <section class="quiz">
+            <h2><i class="fa-solid fa-circle-question"></i> Web Dev Quiz</h2>
+            <div class="card-content">
+                <div class="quiz-header">
+                    <span class="quiz-status" id="quizStatus">Question 1 of 4</span>
+                    <span class="quiz-score" id="quizScoreDisplay" style="display:none">Score: 0/0</span>
+                </div>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizProgressFill" style="width: 25%"></div>
+                </div>
+                
+                <p class="quiz-question" id="quizQuestion">Loading question...</p>
+                <div class="quiz-options" id="quizOptions">
+                    <!-- Options injected dynamically by JS -->
+                </div>
+                
+                <div id="quizResult"></div>
+                
+                <button id="quizResetBtn" class="quiz-reset-btn" onclick="resetQuiz()">
+                    <i class="fa-solid fa-rotate-left"></i> Restart Quiz
+                </button>
+            </div>
+        </section>
+
+        <!-- Carousel Section -->
+        <section class="carousel">
+            <h2><i class="fa-solid fa-images"></i> World Carousel</h2>
+            <div class="card-content">
+                <div class="carousel-viewport">
+                    <img id="slider" src="images/london.png" alt="Carousel City Image">
+                    <div class="carousel-caption" id="carouselCaption">
+                        <h3 id="captionCity">London</h3>
+                        <p id="captionCountry">United Kingdom</p>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-btn" onclick="prevImage()" aria-label="Previous Image">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots" id="carouselDots">
+                        <span class="dot active" onclick="setCurrentImage(0)"></span>
+                        <span class="dot" onclick="setCurrentImage(1)"></span>
+                        <span class="dot" onclick="setCurrentImage(2)"></span>
+                        <span class="dot" onclick="setCurrentImage(3)"></span>
+                    </div>
+                    <button class="nav-btn" onclick="nextImage()" aria-label="Next Image">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather Section -->
+        <section class="weather">
+            <h2><i class="fa-solid fa-cloud-sun"></i> Live City Weather</h2>
+            <div class="card-content weather-widget">
+                <h3 class="weather-city-title" id="weatherCityTitle">London, United Kingdom</h3>
+                <div id="weatherData">
+                    <!-- Dynamic details will be injected here by script.js -->
+                </div>
+                <button class="weather-sync-btn" id="weatherSyncBtn" onclick="fetchActiveCityWeather()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Sync Weather
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js?v=1.0.1"></script>
+
+</body>
+
+</html>
